@@ -36,12 +36,34 @@ const theme = createTheme();
 const visUrls = [
   "https://public.tableau.com/shared/SZQ2TRFCB?:display_count=n&:origin=viz_share_link&:embed=y",
   "https://public.tableau.com/shared/MJR2WRXNW?:display_count=n&:origin=viz_share_link&:embed=y",
+  "https://public.tableau.com/views/Regression_16787418763850/Regression?:language=en-US&:display_count=n&:origin=viz_share_link",
 ];
 
 const visTitles = [
   "Math, Literature and Foreign Language Score By Province",
   "Poverty Rate By Province",
+  "Main Exam Scores by Poverty Rate",
 ];
+
+const vizWidth = [6, 6, 12];
+
+// const visDetail = [
+//   {
+//     url: "https://public.tableau.com/shared/SZQ2TRFCB?:display_count=n&:origin=viz_share_link&:embed=y",
+//     title: "Math, Literature and Foreign Language Score By Province",
+//     width: 6,
+//   },
+//   {
+//     url: "https://public.tableau.com/shared/MJR2WRXNW?:display_count=n&:origin=viz_share_link&:embed=y",
+//     title: "Poverty Rate By Province",
+//     width: 6,
+//   },
+//   {
+//     url: "https://public.tableau.com/views/Regression_16787418763850/Regression?:language=en-US&:display_count=n&:origin=viz_share_link",
+//     title: "Main Exam Scores by Poverty Rate",
+//     width: 12,
+//   },
+// ];
 
 export default function MainPage() {
   return (
@@ -91,7 +113,13 @@ export default function MainPage() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {getManyVis(visUrls).map((vis, index) => (
-              <Grid item key={index} xs={12} sm={6} md={6}>
+              <Grid
+                item
+                key={index}
+                xs={12}
+                sm={vizWidth[index]}
+                md={vizWidth[index]}
+              >
                 <Card
                   sx={{
                     display: "flex",
