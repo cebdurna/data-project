@@ -3,9 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import SchoolIcon from "@mui/icons-material/School";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
@@ -36,13 +34,19 @@ const theme = createTheme();
 const visUrls = [
   "https://public.tableau.com/shared/SZQ2TRFCB?:display_count=n&:origin=viz_share_link&:embed=y",
   "https://public.tableau.com/shared/MJR2WRXNW?:display_count=n&:origin=viz_share_link&:embed=y",
-  "https://public.tableau.com/views/Regression_16787418763850/Regression?:language=en-US&:display_count=n&:origin=viz_share_link",
+  "https://public.tableau.com/views/ExponentialRegression/Sheet1?:language=en-US&:display_count=n&:origin=viz_share_link",
 ];
 
 const visTitles = [
   "Math, Literature and Foreign Language Score By Province",
   "Poverty Rate By Province",
   "Main Exam Scores by Poverty Rate",
+];
+
+const visDescriptions = [
+  "",
+  "",
+  "42% of the variation in exam scores can be explained by the poverty rate alone",
 ];
 
 const vizWidth = [6, 6, 12];
@@ -99,16 +103,40 @@ export default function MainPage() {
             </Typography>
             <Typography
               margin="auto"
-              maxWidth="sm"
+              maxWidth="md"
               variant="h5"
               align="center"
               color="text.secondary"
               paragraph
             >
-              Descriptive text
+              {" "}
+              {
+                "The education system of a country plays a crucial role in its overall development and progress, and similarly, high school education is a crucial stage in a student’s life, as it lays the foundation for higher education and future career opportunities."
+              }
+            </Typography>
+            <br />
+            <br />
+            <Typography
+              margin="auto"
+              maxWidth="md"
+              variant="h5"
+              align="center"
+              color="text.secondary"
+              paragraph
+            >
+              {`This is no different for Vietnam. According to the world bank 'Poorer ethnic communities in geographically remote areas experience higher dropout rates' and learning outcomes in Vietnam suffer from acute geographical inequality, with some regions persistently falling behind other regions in the past 10 years.`}
             </Typography>
           </Container>
         </Box>
+        <Stack
+          sx={{ pt: 4 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+        >
+          <Button variant="contained">Visuals</Button>
+          <Button variant="outlined">Report</Button>
+        </Stack>
         <Container sx={{ py: 1 }} maxWidth="xl">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -132,6 +160,9 @@ export default function MainPage() {
                       Heading
                     </Typography> */}
                     <Typography>{visTitles[index]}</Typography>
+                    {visDescriptions[index] && <br /> && (
+                      <Typography>{visDescriptions[index]}</Typography>
+                    )}
                   </CardContent>
                   {/* <CardActions>
                     <Button size="small">View</Button>
@@ -140,22 +171,31 @@ export default function MainPage() {
                 </Card>
               </Grid>
             ))}
+            <Grid item key={"ysbA3_ZQXO0"} xs={12} sm={12} md={12}>
+              <Card
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <iframe
+                  // width="560"
+                  height="700"
+                  src="https://www.youtube.com/embed/ysbA3_ZQXO0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </Card>
+            </Grid>
           </Grid>
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
-            <Button variant="contained">Button</Button>
-            <Button variant="outlined">Button2</Button>
-          </Stack>
         </Container>
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          {/* Footer */}
         </Typography>
         <Typography
           variant="subtitle1"
@@ -163,7 +203,7 @@ export default function MainPage() {
           color="text.secondary"
           component="p"
         >
-          Footer Text!
+          {/* Footer Text! */}
         </Typography>
         <Copyright />
       </Box>
