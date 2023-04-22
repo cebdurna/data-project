@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import SchoolIcon from "@mui/icons-material/School";
@@ -15,11 +15,14 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import getManyVis from "../utils/visHelpers";
+import Poverty from "../Poverty.png";
+import Cleanwater from "../Cleanwater.png";
+// import AllPagesPDFViewer from "../utils/allPages";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
+      {"Copyright © Justin Parker and Cebrail Durna"}
       <Link color="inherit" href="">
         {/* Your Website */}
       </Link>{" "}
@@ -32,8 +35,8 @@ function Copyright() {
 const theme = createTheme();
 
 const visUrls = [
-  "https://public.tableau.com/shared/SZQ2TRFCB?:display_count=n&:origin=viz_share_link&:embed=y",
-  "https://public.tableau.com/shared/MJR2WRXNW?:display_count=n&:origin=viz_share_link&:embed=y",
+  "https://public.tableau.com/shared/9S4K4H48D?:display_count=n&:origin=viz_share_link&:embed=y",
+  "https://public.tableau.com/shared/ZDDFPKRQ8?:display_count=n&:origin=viz_share_link&:embed=y",
   "https://public.tableau.com/views/ExponentialRegression/Sheet1?:language=en-US&:display_count=n&:origin=viz_share_link",
 ];
 
@@ -44,9 +47,9 @@ const visTitles = [
 ];
 
 const visDescriptions = [
+  "It can be observed that the students in poorer provinces tend to score less in the Exam.",
   "",
-  "",
-  "42% of the variation in exam scores can be explained by the poverty rate alone",
+  "42% of the variation in exam scores can be explained by the poverty rate alone and exams scores decline as poverty increases.",
 ];
 
 const vizWidth = [6, 6, 12];
@@ -70,6 +73,16 @@ const vizWidth = [6, 6, 12];
 // ];
 
 export default function MainPage() {
+  // const [page, setPage] = useState("visuals");
+
+  // const onClick = (page) => {
+  //   const changePage = () => {
+  //     setPage(page === "visuals" ? "visuals" : "report");
+  //     console.log("success");
+  //   };
+  //   return changePage;
+  // };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -77,7 +90,7 @@ export default function MainPage() {
         <Toolbar>
           <SchoolIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
-            DATA 501 Project{" "}
+            DATA 501 Project by Justin Parker and Cebrail Durna{" "}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -134,11 +147,16 @@ export default function MainPage() {
           spacing={2}
           justifyContent="center"
         >
-          <Button variant="contained">Visuals</Button>
-          <Button variant="outlined">Report</Button>
+          {/* <Button variant="contained" onClick={onClick("visuals")}>
+            Visuals
+          </Button>
+          <Button variant="outlined" onClick={onClick("report")}>
+            Report
+          </Button> */}
         </Stack>
         <Container sx={{ py: 1 }} maxWidth="xl">
           {/* End hero unit */}
+
           <Grid container spacing={4}>
             {getManyVis(visUrls).map((vis, index) => (
               <Grid
@@ -171,6 +189,51 @@ export default function MainPage() {
                 </Card>
               </Grid>
             ))}
+            <Grid item key={"poverty"} xs={12} sm={6} md={6}>
+              <Card
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <img src={"https://i.imgur.com/YVIl1fH.png"} />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  {/* <Typography gutterBottom variant="h5" component="h2">
+                      Heading
+                    </Typography> */}
+                  <Typography>Poverty Across The Years</Typography>
+                  {
+                    <Typography>
+                      It can be observed that the overall poverty rates are
+                      getting lower as time pases
+                    </Typography>
+                  }
+                  <br />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item key={"poverty"} xs={12} sm={6} md={6}>
+              <Card
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <img src={"https://i.imgur.com/esHt2dQ.png"} />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  {/* <Typography gutterBottom variant="h5" component="h2">
+                      Heading
+                    </Typography> */}
+                  <Typography>Clean Water Access Across The Years</Typography>
+                  {
+                    <Typography>
+                      Clean Water access which is directly related to SES status
+                      also is getting better by year
+                    </Typography>
+                  }
+                </CardContent>
+              </Card>
+            </Grid>
             <Grid item key={"ysbA3_ZQXO0"} xs={12} sm={12} md={12}>
               <Card
                 sx={{
